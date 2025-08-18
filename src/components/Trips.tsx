@@ -482,3 +482,4 @@ const ImageLightbox = ({ image, onClose }: { image: TripImage; onClose: () => vo
 
 export default Trips;
 
+

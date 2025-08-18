@@ -74,3 +74,4 @@ export const deleteImage = async (publicId: string): Promise<void> => {
 
 export default cloudinary;
 
+

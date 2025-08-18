@@ -144,3 +144,4 @@ Once Cloudinary is working:
 4. **Add image galleries** with lazy loading
 5. **Set up backup strategies** for important images
 
+

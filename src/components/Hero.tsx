@@ -131,14 +131,14 @@ const Hero = () => {
           {/* Animated Bird */}
           <motion.div
             className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <motion.div
-              className="relative"
+              className="relative left-[-1070px]"
               animate={{
-                y: [0, -20, 0],
+                y: [0, -10, 0],
                 rotate: [0, 5, -5, 0],
               }}
               transition={{
@@ -153,7 +153,7 @@ const Hero = () => {
                 viewBox="0 0 200 200"
                 className="text-primary drop-shadow-2xl"
                 animate={{
-                  scale: [1, 1.1, 1],
+                  scale: [0.7, 1.1, 1.2],
                 }}
                 transition={{
                   duration: 3,
@@ -163,19 +163,22 @@ const Hero = () => {
               >
                 {/* Enhanced bird shape */}
                 <defs>
-                  <linearGradient id="birdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="birdGrad" x1="0%" y1="0%" x2="10%" y2="100%">
                     <stop offset="0%" style={{ stopColor: "#D9A8FF", stopOpacity: 1 }} />
                     <stop offset="100%" style={{ stopColor: "#FFB4A2", stopOpacity: 1 }} />
                   </linearGradient>
                 </defs>
+                {/* Bird head/body shape - centered at (100, 110) */}
                 <path
                   d="M 40 100 Q 60 80 80 100 Q 100 120 120 100 Q 140 80 160 100 L 160 120 Q 140 140 120 120 Q 100 100 80 120 Q 60 140 40 120 Z"
                   fill="url(#birdGrad)"
                   opacity="0.9"
                 />
-                <circle cx="70" cy="95" r="4" fill="white" opacity="0.8"/>
-                <circle cx="130" cy="95" r="4" fill="white" opacity="0.8"/>
-                <path d="M 100 90 L 100 70 M 95 75 L 105 75" stroke="white" strokeWidth="3" fill="none" opacity="0.8"/>
+                {/* Bird eyes - properly aligned with the head shape */}
+                <circle cx="75" cy="105" r="4" fill="white" opacity="0.8"/>
+                <circle cx="125" cy="105" r="4" fill="white" opacity="0.8"/>
+                {/* Bird beak - centered and aligned with the head */}
+                <path d="M 100 100 L 100 85 M 95 90 L 105 90" stroke="white" strokeWidth="3" fill="none" opacity="0.8"/>
                 
                 {/* Decorative elements */}
                 <motion.path

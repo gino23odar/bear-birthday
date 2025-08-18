@@ -84,10 +84,10 @@ export const mockData: MockData = {
     }
   ],
   samplePrompts: [
-    'Write a short, lyrical birthday message in Russian and English, each 3–4 lines, that references birds, the countryside, and a river. Use sophisticated but tender language suitable for a philologist.',
-    'Create a poetic description of a morning by the river, with birds singing and the gentle sound of water. Use rich, evocative language.',
-    'Write a birthday wish that incorporates the theme of tiny piglets (svinkas) exploring a Russian garden, with a touch of whimsy and warmth.',
-    'Compose a short verse about swimming in a river, with references to nature and the joy of being immersed in the countryside.',
-    'Generate a birthday message that celebrates both the intellectual depth of a philologist and the simple pleasures of nature and friendship.'
+    'A beautiful watercolor painting of a Russian countryside cottage by a gentle river, with birds flying overhead and wildflowers in the foreground, soft pastel colors, dreamy atmosphere',
+    'A whimsical illustration of tiny piglets (svinkas) exploring a magical garden with butterflies, flowers, and a small pond, cartoon style, warm and inviting',
+    'A serene landscape painting of a peaceful river scene at sunset, with a wooden bridge, willow trees, and a stork standing in the water, impressionist style',
+    'A cozy scene of a bear reading a book in a garden, surrounded by birds, flowers, and a teacup, warm lighting, detailed and charming',
+    'A fantasy illustration of a floating island with a treehouse, connected by bridges, with birds and small animals, magical forest atmosphere, vibrant colors'
   ]
 };
