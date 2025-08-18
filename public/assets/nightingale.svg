@@ -1,0 +1,15 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="80" r="22" fill="url(#nightGrad)"/>
+  <ellipse cx="100" cy="115" rx="30" ry="20" fill="#8B7355"/>
+  <circle cx="92" cy="75" r="3" fill="black"/>
+  <path d="M 85 70 Q 80 65 75 70" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M 100 58 L 100 35 M 95 40 L 105 40" stroke="#8B7355" stroke-width="2" fill="none"/>
+  <path d="M 70 60 Q 60 50 50 60" stroke="#FFD700" stroke-width="3" fill="none" opacity="0.7"/>
+</svg>
+

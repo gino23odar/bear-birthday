@@ -1,0 +1,21 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pigGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB6C1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFC0CB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="130" rx="50" ry="40" fill="url(#pigGrad2)" stroke="#FF69B4" stroke-width="2"/>
+  <circle cx="100" cy="95" r="35" fill="url(#pigGrad2)" stroke="#FF69B4" stroke-width="2"/>
+  <ellipse cx="85" cy="90" rx="10" ry="8" fill="black"/>
+  <ellipse cx="115" cy="90" rx="10" ry="8" fill="black"/>
+  <circle cx="87" cy="88" r="3" fill="white"/>
+  <circle cx="117" cy="88" r="3" fill="white"/>
+  <ellipse cx="100" cy="100" rx="5" ry="4" fill="#FF69B4"/>
+  <ellipse cx="65" cy="120" rx="8" ry="6" fill="url(#pigGrad2)" stroke="#FF69B4" stroke-width="1"/>
+  <ellipse cx="135" cy="120" rx="8" ry="6" fill="url(#pigGrad2)" stroke="#FF69B4" stroke-width="1"/>
+  <ellipse cx="65" cy="155" rx="5" ry="4" fill="#FF69B4"/>
+  <ellipse cx="135" cy="155" rx="5" ry="4" fill="#FF69B4"/>
+  <path d="M 100 70 L 100 50 M 95 55 L 105 55" stroke="#FF69B4" stroke-width="3" fill="none"/>
+</svg>
+

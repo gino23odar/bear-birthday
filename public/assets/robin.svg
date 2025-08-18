@@ -1,0 +1,14 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="robinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="80" r="25" fill="url(#robinGrad)"/>
+  <ellipse cx="100" cy="120" rx="35" ry="25" fill="#FF6B6B"/>
+  <circle cx="90" cy="75" r="3" fill="black"/>
+  <path d="M 85 70 Q 80 65 75 70" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M 100 60 L 100 40 M 95 45 L 105 45" stroke="#8B4513" stroke-width="3" fill="none"/>
+</svg>
+
