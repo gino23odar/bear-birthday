@@ -34,7 +34,7 @@ export const mockData: MockData = {
   svinkas: [
     {
       id: '1',
-      name: 'Masha',
+      name: 'Stinkovich',
       description: 'A curious little pig who loves to explore the garden',
       imageUrl: '/assets/svinka1.svg',
       personality: 'Adventurous and sweet'
@@ -55,7 +55,7 @@ export const mockData: MockData = {
     },
     {
       id: '4',
-      name: 'Vasya',
+      name: 'Vaniuchky',
       description: 'A playful piglet who loves swimming in shallow waters',
       imageUrl: '/assets/svinka4.svg',
       personality: 'Energetic and joyful'
