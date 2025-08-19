@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 // API Types
 export interface GenerateRequest {
   model: string;
@@ -58,8 +60,18 @@ export interface FortuneCardProps {
   isRevealed?: boolean;
 }
 
+/**
+ * LLMPlaygroundProps
+ * Non-empty interface to satisfy eslint rules.
+ * - `presetPrompt` lets you populate the input initially.
+ * - `onSubmit` is a typed callback the parent can pass.
+ * - `children` kept optional so you can render extras inside the component.
+ */
 export interface LLMPlaygroundProps {
-  // Add props if needed
+  presetPrompt?: string;
+  onSubmit?: (prompt: string) => void;
+  showExamples?: boolean;
+  children?: ReactNode;
 }
 
 // Trip Types
