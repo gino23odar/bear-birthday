@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
   const [showLoveNote, setShowLoveNote] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-main-gradient">
@@ -32,15 +34,15 @@ const Hero = () => {
             }}
           />
         ))}
-        
+
         {/* Larger floating elements */}
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={`large-${i}`}
             className="absolute w-3 h-3 bg-accent/15 rounded-full"
             style={{
-              left: `${20 + (i * 15)}%`,
-              top: `${30 + (i * 10)}%`,
+              left: `${20 + i * 15}%`,
+              top: `${30 + i * 10}%`,
             }}
             animate={{
               y: [0, -40, 0],
@@ -55,7 +57,7 @@ const Hero = () => {
             }}
           />
         ))}
-        
+
         {/* Subtle waves */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-countryside/30 via-countryside/20 to-transparent"
@@ -87,9 +89,44 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Happy Birthday, Bear
-              <span className="block text-4xl md:text-6xl lg:text-7xl mt-4">🐻</span>
+              {language === "en"
+                ? "Happy Birthday, Bear"
+                : "С Днем Рождения, Медвежонок"}
+              <span className="block text-4xl md:text-6xl lg:text-7xl mt-4">
+                🐻
+              </span>
             </motion.h1>
+
+            {/* Language Toggle for Hero */}
+            <motion.div
+              className="flex justify-center lg:justify-start mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <div className="flex bg-white/20 backdrop-blur-sm rounded-full p-1 border border-white/30">
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    language === "en"
+                      ? "bg-white text-deep shadow-sm"
+                      : "text-white hover:text-white/80"
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage("ru")}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    language === "ru"
+                      ? "bg-white text-deep shadow-sm"
+                      : "text-white hover:text-white/80"
+                  }`}
+                >
+                  RU
+                </button>
+              </div>
+            </motion.div>
 
             {/* Subtitle */}
             <motion.p
@@ -98,8 +135,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              For the philologist who loves rivers, birds, and tiny{' '}
-              <span className="text-accent font-semibold">svinkas</span>.
+              {language === "en"
+                ? "For the philologist who finds poetry in river currents, wisdom in bird songs, and joy in tiny svinkas."
+                : "Для филолога, который находит поэзию в течении рек, мудрость в пении птиц и радость в крошечных свинках."}
             </motion.p>
 
             {/* Call to Action */}
@@ -115,7 +153,9 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Try the LLM Playground
+                {language === "en"
+                  ? "Try the LLM Playground"
+                  : "Попробовать LLM Площадку"}
               </motion.a>
               <motion.a
                 href="/fortune"
@@ -123,7 +163,9 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Your Fortune
+                {language === "en"
+                  ? "Get Your Fortune"
+                  : "Получить Предсказание"}
               </motion.a>
             </motion.div>
           </motion.div>
@@ -163,9 +205,21 @@ const Hero = () => {
               >
                 {/* Enhanced bird shape */}
                 <defs>
-                  <linearGradient id="birdGrad" x1="0%" y1="0%" x2="10%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#D9A8FF", stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: "#FFB4A2", stopOpacity: 1 }} />
+                  <linearGradient
+                    id="birdGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="10%"
+                    y2="100%"
+                  >
+                    <stop
+                      offset="0%"
+                      style={{ stopColor: "#D9A8FF", stopOpacity: 1 }}
+                    />
+                    <stop
+                      offset="100%"
+                      style={{ stopColor: "#FFB4A2", stopOpacity: 1 }}
+                    />
                   </linearGradient>
                 </defs>
                 {/* Bird head/body shape - centered at (100, 110) */}
@@ -175,11 +229,17 @@ const Hero = () => {
                   opacity="0.9"
                 />
                 {/* Bird eyes - properly aligned with the head shape */}
-                <circle cx="75" cy="105" r="4" fill="white" opacity="0.8"/>
-                <circle cx="125" cy="105" r="4" fill="white" opacity="0.8"/>
+                <circle cx="75" cy="105" r="4" fill="white" opacity="0.8" />
+                <circle cx="125" cy="105" r="4" fill="white" opacity="0.8" />
                 {/* Bird beak - centered and aligned with the head */}
-                <path d="M 100 100 L 100 85 M 95 90 L 105 90" stroke="white" strokeWidth="3" fill="none" opacity="0.8"/>
-                
+                <path
+                  d="M 100 100 L 100 85 M 95 90 L 105 90"
+                  stroke="white"
+                  strokeWidth="3"
+                  fill="none"
+                  opacity="0.8"
+                />
+
                 {/* Decorative elements */}
                 <motion.path
                   d="M 60 80 Q 50 70 40 80"
@@ -211,7 +271,7 @@ const Hero = () => {
       >
         <motion.button
           className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full shadow-2xl flex items-center justify-center text-white text-3xl hover:shadow-primary/50"
-          whileHover={{ 
+          whileHover={{
             scale: 1.15,
             rotate: [0, -10, 10, 0],
           }}
@@ -251,16 +311,22 @@ const Hero = () => {
               >
                 ✕
               </motion.button>
-              
+
               <div className="text-6xl mb-6">💝</div>
-              <h3 className="heading-md text-primary mb-4">A Private Note</h3>
+              <h3 className="heading-md text-primary mb-4">
+                {language === "en" ? "A Private Note" : "Личная Записка"}
+              </h3>
               <p className="text-body mb-6">
-                Dear Bear, on your special day, may your love for language and nature continue to inspire. 
-                You bring beauty to every word and joy to every heart you touch.
+                {language === "en"
+                  ? "Dear Bear, on your special day, may your love for language and nature continue to inspire. You bring beauty to every word and joy to every heart you touch."
+                  : "Дорогой Медвежонок, в твой особенный день пусть твоя любовь к языку и природе продолжает вдохновлять. Ты приносишь красоту каждому слову и радость каждому сердцу, которого касаешься."}
               </p>
               <p className="text-caption text-accent">
-                With love and admiration,<br />
-                Night Penguin 🐧
+                {language === "en"
+                  ? "With love and admiration,"
+                  : "С любовью и восхищением,"}
+                <br />
+                {language === "en" ? "Night Penguin 🐧" : "Ночной Пингвин 🐧"}
               </p>
             </motion.div>
           </motion.div>

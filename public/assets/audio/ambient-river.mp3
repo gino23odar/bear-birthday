@@ -1,0 +1,24 @@
+# AMBIENT AUDIO PLACEHOLDER
+
+This file should be replaced with an actual ambient audio file containing:
+- Gentle river flowing sounds
+- Bird songs and chirping
+- Nature ambience (wind, leaves rustling)
+- Duration: 2-5 minutes (will loop)
+- Format: MP3, 128-192 kbps
+- Volume: Normalized for comfortable listening
+
+## Recommended Sources:
+- Free nature sound libraries
+- Creative Commons licensed audio
+- Professional nature recordings
+
+## File Requirements:
+- File size: Under 10MB
+- Sample rate: 44.1 kHz
+- Bit depth: 16-bit
+- Channels: Stereo or Mono
+
+## Implementation Notes:
+The audio will autoplay muted by default to comply with browser policies.
+Users can unmute and adjust volume through the audio controls in the bottom-left corner.

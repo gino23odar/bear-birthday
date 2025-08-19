@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useGenerateContent } from '@/hooks/useApi';
-import { GenerateRequest } from '@/types';
-import { mockData } from '@/mocks/data';
-import { isMockMode } from '@/lib/api';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useGenerateContent } from "@/hooks/useApi";
+import { GenerateRequest } from "@/types";
+import { mockData } from "@/mocks/data";
+import { isMockMode } from "@/lib/api";
 
 const LLMPlayground = () => {
-  const [prompt, setPrompt] = useState('');
-  const [model, setModel] = useState('wan-2.2');
-  const [type, setType] = useState<'text' | 'image'>('text');
+  const [prompt, setPrompt] = useState("");
+  const [model, setModel] = useState("wan-2.2");
+  const [type, setType] = useState<"text" | "image">("text");
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(512);
-  
+
   const { generate, isLoading, error, result, reset } = useGenerateContent();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,7 +46,7 @@ const LLMPlayground = () => {
 
   const handleReset = () => {
     reset();
-    setPrompt('');
+    setPrompt("");
   };
 
   return (
@@ -58,11 +58,10 @@ const LLMPlayground = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="heading-xl text-gradient mb-6">
-            LLM Playground
-          </h1>
+          <h1 className="heading-xl text-gradient mb-6">LLM Playground</h1>
           <p className="text-body max-w-3xl mx-auto">
-            Connect to your local ComfyUI + WAN 2.2 setup or explore with mock responses.
+            Connect to your local ComfyUI + WAN 2.2 setup or explore with mock
+            responses.
             {isMockMode() && (
               <span className="block text-sm text-accent font-medium mt-3 px-4 py-2 bg-accent/10 rounded-full inline-block">
                 🎭 Currently running in mock mode
@@ -103,7 +102,9 @@ const LLMPlayground = () => {
                     </label>
                     <select
                       value={type}
-                      onChange={(e) => setType(e.target.value as 'text' | 'image')}
+                      onChange={(e) =>
+                        setType(e.target.value as "text" | "image")
+                      }
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
                     >
                       <option value="text">Text</option>
@@ -125,7 +126,9 @@ const LLMPlayground = () => {
                         max="2"
                         step="0.1"
                         value={temperature}
-                        onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                        onChange={(e) =>
+                          setTemperature(parseFloat(e.target.value))
+                        }
                         className="w-full h-3 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg appearance-none cursor-pointer slider"
                       />
                       <div className="flex justify-between text-xs text-deep/60 mt-2">
@@ -158,6 +161,54 @@ const LLMPlayground = () => {
                   </div>
                 </div>
 
+                {/* Preset Buttons */}
+                <div className="space-y-3">
+                  <label className="block text-sm font-semibold text-deep">
+                    Quick Presets
+                  </label>
+                  <div className="flex flex-wrap gap-3">
+                    <motion.button
+                      type="button"
+                      onClick={() =>
+                        setPrompt(
+                          "Write a poetic description of a morning by the river, with birds singing and the gentle flow of water."
+                        )
+                      }
+                      className="px-4 py-2 bg-gradient-to-r from-[var(--primary-dark)]/20 to-[var(--accent)]/20 border border-[var(--primary-dark)]/30 rounded-lg text-sm font-medium text-deep hover:from-[var(--primary-dark)]/30 hover:to-[var(--accent)]/30 transition-all duration-200"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      🌊 Poetic
+                    </motion.button>
+                    <motion.button
+                      type="button"
+                      onClick={() =>
+                        setPrompt(
+                          "Create a playful story about a tiny svinka exploring the garden and meeting friendly birds."
+                        )
+                      }
+                      className="px-4 py-2 bg-gradient-to-r from-[var(--primary-dark)]/20 to-[var(--accent)]/20 border border-[var(--primary-dark)]/30 rounded-lg text-sm font-medium text-deep hover:from-[var(--primary-dark)]/30 hover:to-[var(--accent)]/30 transition-all duration-200"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      🐷 Playful
+                    </motion.button>
+                    <motion.button
+                      type="button"
+                      onClick={() =>
+                        setPrompt(
+                          "Analyze the linguistic patterns in Russian folk tales about nature and rivers, focusing on metaphor and symbolism."
+                        )
+                      }
+                      className="px-4 py-2 bg-gradient-to-r from-[var(--primary-dark)]/20 to-[var(--accent)]/20 border border-[var(--primary-dark)]/30 rounded-lg text-sm font-medium text-deep hover:from-[var(--primary-dark)]/30 hover:to-[var(--accent)]/30 transition-all duration-200"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      📚 Formal
+                    </motion.button>
+                  </div>
+                </div>
+
                 {/* Prompt Input */}
                 <div className="space-y-3">
                   <label className="block text-sm font-semibold text-deep">
@@ -171,6 +222,10 @@ const LLMPlayground = () => {
                     className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-all duration-200 bg-white/80 backdrop-blur-sm placeholder:text-deep/40"
                     required
                   />
+                  <p className="text-xs text-deep/60 italic">
+                    💡 Tip: Try asking about rivers, birds, philology, or create
+                    stories about svinkas in the countryside
+                  </p>
                 </div>
 
                 {/* Submit Button */}
@@ -188,7 +243,7 @@ const LLMPlayground = () => {
                         Generating...
                       </div>
                     ) : (
-                      'Generate'
+                      "Generate"
                     )}
                   </motion.button>
                   {result && (
@@ -215,17 +270,19 @@ const LLMPlayground = () => {
             >
               <h3 className="heading-md text-deep mb-6">Sample Prompts</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {mockData.samplePrompts.slice(0, 4).map((samplePrompt, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => handleSamplePrompt(samplePrompt)}
-                    className="text-left p-4 text-sm text-deep/80 hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 border border-gray-200 hover:border-primary/30 hover:shadow-md text-start"
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {samplePrompt.substring(0, 80)}...
-                  </motion.button>
-                ))}
+                {mockData.samplePrompts
+                  .slice(0, 4)
+                  .map((samplePrompt, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => handleSamplePrompt(samplePrompt)}
+                      className="text-left p-4 text-sm text-deep/80 hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 border border-gray-200 hover:border-primary/30 hover:shadow-md text-start"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {samplePrompt.substring(0, 80)}...
+                    </motion.button>
+                  ))}
               </div>
             </motion.div>
           </div>
@@ -239,7 +296,7 @@ const LLMPlayground = () => {
               className="card p-6 h-fit sticky top-24"
             >
               <h3 className="heading-md text-deep mb-6">Results</h3>
-              
+
               <AnimatePresence mode="wait">
                 {isLoading && (
                   <motion.div
@@ -252,8 +309,12 @@ const LLMPlayground = () => {
                       <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-6"></div>
                       <div className="absolute inset-0 rounded-full border-2 border-primary/20"></div>
                     </div>
-                    <p className="text-deep/60 font-medium">Generating your content...</p>
-                    <p className="text-caption text-deep/40 mt-2">This may take a few moments</p>
+                    <p className="text-deep/60 font-medium">
+                      Generating your content...
+                    </p>
+                    <p className="text-caption text-deep/40 mt-2">
+                      This may take a few moments
+                    </p>
                   </motion.div>
                 )}
 
@@ -267,7 +328,9 @@ const LLMPlayground = () => {
                     <div className="flex items-center space-x-3">
                       <div className="text-2xl">⚠️</div>
                       <div>
-                        <p className="text-red-800 font-medium">Generation failed</p>
+                        <p className="text-red-800 font-medium">
+                          Generation failed
+                        </p>
                         <p className="text-red-700 text-sm mt-1">{error}</p>
                       </div>
                     </div>
@@ -290,7 +353,7 @@ const LLMPlayground = () => {
                       </div>
                     </div>
 
-                    {result.result.type === 'text' && result.result.text && (
+                    {result.result.type === "text" && result.result.text && (
                       <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/20">
                         <h4 className="font-semibold text-deep mb-3 flex items-center">
                           <span className="text-primary mr-2">📝</span>
@@ -302,26 +365,35 @@ const LLMPlayground = () => {
                       </div>
                     )}
 
-                    {result.result.type === 'image' && result.result.imageBase64 && (
-                      <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/20">
-                        <h4 className="font-semibold text-deep mb-3 flex items-center">
-                          <span className="text-primary mr-2">🖼️</span>
-                          Generated Image
-                        </h4>
-                        <img
-                          src={`data:${result.result.mime};base64,${result.result.imageBase64}`}
-                          alt="Generated content"
-                          className="w-full rounded-xl border border-primary/20 shadow-lg"
-                        />
-                      </div>
-                    )}
+                    {result.result.type === "image" &&
+                      result.result.imageBase64 && (
+                        <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/20">
+                          <h4 className="font-semibold text-deep mb-3 flex items-center">
+                            <span className="text-primary mr-2">🖼️</span>
+                            Generated Image
+                          </h4>
+                          <img
+                            src={`data:${result.result.mime};base64,${result.result.imageBase64}`}
+                            alt="Generated content"
+                            className="w-full rounded-xl border border-primary/20 shadow-lg"
+                          />
+                        </div>
+                      )}
 
                     <div className="bg-deep/5 rounded-xl p-4 text-xs text-deep/60">
                       <div className="grid grid-cols-2 gap-2">
-                        <p><strong>Job ID:</strong> {result.id}</p>
-                        <p><strong>Status:</strong> {result.status}</p>
-                        <p><strong>Type:</strong> {result.result.type}</p>
-                        <p><strong>Model:</strong> {model}</p>
+                        <p>
+                          <strong>Job ID:</strong> {result.id}
+                        </p>
+                        <p>
+                          <strong>Status:</strong> {result.status}
+                        </p>
+                        <p>
+                          <strong>Type:</strong> {result.result.type}
+                        </p>
+                        <p>
+                          <strong>Model:</strong> {model}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
@@ -330,8 +402,12 @@ const LLMPlayground = () => {
                 {!isLoading && !error && !result && (
                   <div className="text-center py-12 text-deep/40">
                     <div className="text-4xl mb-4">✨</div>
-                    <p className="font-medium">Your generated content will appear here</p>
-                    <p className="text-sm mt-2">Start by entering a prompt above</p>
+                    <p className="font-medium">
+                      Your generated content will appear here
+                    </p>
+                    <p className="text-sm mt-2">
+                      Start by entering a prompt above
+                    </p>
                   </div>
                 )}
               </AnimatePresence>
